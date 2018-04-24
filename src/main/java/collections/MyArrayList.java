@@ -6,16 +6,41 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class MyArrayList<T> implements List<T> {
-    public int size() {
-        return size();
+
+    private static final Object[] EMPTY_DATA = {};
+    private static final int DEFAULT_CAPACITY = 10;
+
+    private int capacity;
+    private int size;
+    private Object[] data;
+
+    public MyArrayList() {
+        this.data = EMPTY_DATA;
     }
+
+    public MyArrayList(int initialCapacity) {
+        if (initialCapacity > 0) {
+            this.data = new Object[initialCapacity];
+            capacity = initialCapacity;
+        } else if (initialCapacity == 0) {
+            this.data = EMPTY_DATA;
+            capacity = 0;
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
+    public int size() {
+        return size;
+    }
+
 
     public boolean isEmpty() {
         return size() == 0;
     }
 
     public boolean contains(Object o) {
-        return false;
+        return indexOf(0) > -1;
     }
 
     public Iterator<T> iterator() {
@@ -28,6 +53,11 @@ public class MyArrayList<T> implements List<T> {
 
     public <T1> T1[] toArray(T1[] a) {
         return null;
+    }
+
+    private boolean needGrowCapacity(){
+//        if
+        return false;
     }
 
     public boolean add(T t) {
@@ -72,6 +102,7 @@ public class MyArrayList<T> implements List<T> {
 
     public void add(int index, T element) {
 
+
     }
 
     public T remove(int index) {
@@ -79,7 +110,20 @@ public class MyArrayList<T> implements List<T> {
     }
 
     public int indexOf(Object o) {
-        return 0;
+        if (o == null) {
+            for (int i = 0; i < size; i++) {
+                if (data[i] == null) {
+                    return i;
+                }
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (o.equals(data[i] == null)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     public int lastIndexOf(Object o) {
