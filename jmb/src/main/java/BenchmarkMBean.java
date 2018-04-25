@@ -1,5 +1,3 @@
-package jmb;
-
 public interface BenchmarkMBean {
     int getSize();
 

@@ -1,5 +1,3 @@
-package jmb;
-
 public class Benchmark implements BenchmarkMBean {
 
     private volatile int size = 0;
